@@ -1,5 +1,7 @@
 //  AgeGating.swift
 //
+//  Created by Sriteja Thuraka on 8/16/26.
+
 //  Copyright © 2026 Sriteja Thuraka.
 //  Licensed under the MIT License.
 //  See LICENSE for details.
@@ -26,7 +28,7 @@ public enum AgeGating {
         // 2. If not eligible (or unsupported), return immediately
         guard eligibility == true else {
             return AgeGatingResult(
-                isELigibleForAgeFearures: eligibility,
+                isEligibleForAgeFearures: eligibility,
                 regulatoryFeatures: nil,
                 ageRange: nil
             )
@@ -45,18 +47,20 @@ public enum AgeGating {
 
         // 5. Return everything to the developer
         return AgeGatingResult(
-            isELigibleForAgeFearures: eligibility,
+            isEligibleForAgeFearures: eligibility,
             regulatoryFeatures: regulatoryFeatures,
             ageRange: ageRange
         )
     }
     
+    // MARK: - Significant Change - Parental Consent
+    
     public static func requestSignificatntAppUpdatePermission(
-        descrition: String,
+        description: String,
         presentingViewController: UIViewController
     ) async throws {
         try await SignificantChangeService.requestPermission(
-            descrition: descrition,
+            description: description,
             presentingViewController: presentingViewController
         )
     }
@@ -64,6 +68,18 @@ public enum AgeGating {
     public static func significantAppUpdateResponses()
     -> AsyncStream<SignificantChangeResponse> {
         SignificantChangeService.responses()
+    }
+    
+    // MARK: - Significant Change - Adult Notification
+    
+    public static func showSignificantAppUpdateAdultNotification(
+        decription: String,
+        presentingViewController: UIViewController
+    ) async throws {
+        try await AdultNotificationService.showAcknowledgement(
+            description: decription,
+            presentingViewController: presentingViewController
+        )
     }
     
 

@@ -1,6 +1,8 @@
 
 //
 //  SignificantChangeService.swift
+//
+//  Created by Sriteja Thuraka on 8/16/26.
 //  Copyright © 2026 Sriteja Thuraka.
 //  Licensed under the MIT License.
 //  See LICENSE for details.
@@ -75,8 +77,9 @@ static func responses() -> AsyncStream<SignificantChangeResponse> {
                         decision = .unknown
                     }
                     let result = SignificantChangeResponse(
-                        questionID: value.question.id,
-                        choiceID: value.choice.id
+                        questionID: value.question.id.uuidString,
+                        choiceID: value.choice.id,
+                        decision: decision
                     )
                     continuation.yield(result)
                 }

@@ -5,7 +5,7 @@ enum class SignificantChangeStatus {
 
     PENDING,
     APPROVED,
-    DENIED,
+    DECLINED,
     UNKNOWN
 
 }

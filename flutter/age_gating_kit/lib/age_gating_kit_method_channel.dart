@@ -3,16 +3,13 @@ import 'package:flutter/services.dart';
 
 import 'age_gating_kit_platform_interface.dart';
 
-class MethodChannelAgeGatingKit
-    extends AgeGatingKitPlatform {
+class MethodChannelAgeGatingKit extends AgeGatingKitPlatform {
   @visibleForTesting
-  final methodChannel =
-      const MethodChannel('age_gating_kit');
+  final methodChannel = const MethodChannel('age_gating_kit');
 
   @override
   Future<Map<dynamic, dynamic>> checkAge() async {
-    final result =
-        await methodChannel.invokeMethod<Map<dynamic, dynamic>>(
+    final result = await methodChannel.invokeMethod<Map<dynamic, dynamic>>(
       'checkAge',
     );
 
@@ -23,12 +20,9 @@ class MethodChannelAgeGatingKit
   Future<Map<dynamic, dynamic>> requestParentalConsent({
     required String description,
   }) async {
-    final result =
-        await methodChannel.invokeMethod<Map<dynamic, dynamic>>(
+    final result = await methodChannel.invokeMethod<Map<dynamic, dynamic>>(
       'requestParentalConsent',
-      {
-        'description': description,
-      },
+      {'description': description},
     );
 
     return result ?? <dynamic, dynamic>{};
@@ -38,12 +32,9 @@ class MethodChannelAgeGatingKit
   Future<Map<dynamic, dynamic>> showAdultNotification({
     required String description,
   }) async {
-    final result =
-        await methodChannel.invokeMethod<Map<dynamic, dynamic>>(
+    final result = await methodChannel.invokeMethod<Map<dynamic, dynamic>>(
       'showAdultNotification',
-      {
-        'description': description,
-      },
+      {'description': description},
     );
 
     return result ?? <dynamic, dynamic>{};

@@ -7,8 +7,7 @@ abstract class AgeGatingKitPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static AgeGatingKitPlatform _instance =
-      MethodChannelAgeGatingKit();
+  static AgeGatingKitPlatform _instance = MethodChannelAgeGatingKit();
 
   static AgeGatingKitPlatform get instance => _instance;
 
@@ -18,9 +17,7 @@ abstract class AgeGatingKitPlatform extends PlatformInterface {
   }
 
   Future<Map<dynamic, dynamic>> checkAge() {
-    throw UnimplementedError(
-      'checkAge() has not been implemented.',
-    );
+    throw UnimplementedError('checkAge() has not been implemented.');
   }
 
   Future<Map<dynamic, dynamic>> requestParentalConsent({

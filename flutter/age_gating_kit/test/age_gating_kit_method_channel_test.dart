@@ -11,48 +11,31 @@ void main() {
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        if (methodCall.method == 'checkAge') {
-          return {
-            'isEligibleForAgeFeatures': true,
-            'ageRange': '13-17',
-            'requiredRegulatoryFeatures': [
-              'parentalConsent',
-            ],
-          };
-        }
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+          if (methodCall.method == 'checkAge') {
+            return {
+              'isEligibleForAgeFeatures': true,
+              'ageRange': '13-17',
+              'requiredRegulatoryFeatures': ['parentalConsent'],
+            };
+          }
 
-        return null;
-      },
-    );
+          return null;
+        });
   });
 
   tearDown(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(
-      channel,
-      null,
-    );
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('checkAge returns expected native map', () async {
     final result = await platform.checkAge();
 
-    expect(
-      result['isEligibleForAgeFeatures'],
-      true,
-    );
+    expect(result['isEligibleForAgeFeatures'], true);
 
-    expect(
-      result['ageRange'],
-      '13-17',
-    );
+    expect(result['ageRange'], '13-17');
 
-    expect(
-      result['requiredRegulatoryFeatures'],
-      contains('parentalConsent'),
-    );
+    expect(result['requiredRegulatoryFeatures'], contains('parentalConsent'));
   });
 }

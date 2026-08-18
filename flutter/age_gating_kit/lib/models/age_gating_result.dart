@@ -9,34 +9,26 @@ class AgeGatingResult {
     required this.requiredRegulatoryFeatures,
   });
 
-  factory AgeGatingResult.fromMap(
-    Map<dynamic, dynamic> map,
-  ) {
+  factory AgeGatingResult.fromMap(Map<dynamic, dynamic> map) {
     return AgeGatingResult(
-      isEligibleForAgeFeatures:
-          map['isEligibleForAgeFeatures'] == true,
+      isEligibleForAgeFeatures: map['isEligibleForAgeFeatures'] == true,
       ageRange: map['ageRange'] as String?,
-      requiredRegulatoryFeatures:
-          List<String>.from(
+      requiredRegulatoryFeatures: List<String>.from(
         map['requiredRegulatoryFeatures'] ?? const [],
       ),
     );
   }
 
   bool get requiresDeclaredAgeRange =>
-      requiredRegulatoryFeatures.contains(
-        'declaredAgeRangeRequired',
-      );
+      requiredRegulatoryFeatures.contains('declaredAgeRangeRequired');
 
-  bool get requiresParentalConsent =>
-      requiredRegulatoryFeatures.contains(
-        'significantAppChangeRequiresParentalConsent',
-      );
+  bool get requiresParentalConsent => requiredRegulatoryFeatures.contains(
+    'significantAppChangeRequiresParentalConsent',
+  );
 
-  bool get requiresAdultNotification =>
-      requiredRegulatoryFeatures.contains(
-        'significantAppChangeRequiresAdultNotification',
-      );
+  bool get requiresAdultNotification => requiredRegulatoryFeatures.contains(
+    'significantAppChangeRequiresAdultNotification',
+  );
 
   @override
   String toString() {

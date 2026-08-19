@@ -1,0 +1,15 @@
+{
+  "originHash" : "25fc347d82868b6f1812214757deb208dfa67d6ab774241d9eb8972e150adfa8",
+  "pins" : [
+    {
+      "identity" : "agegatingkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Sritejathuraka/AgeGatingKit.git",
+      "state" : {
+        "revision" : "ae260de371530f44a88f7908cc044f765e2e5ec7",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
